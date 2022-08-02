@@ -75,11 +75,11 @@ export const Login = () => {
           name='password'
           onChange={handleInput}
         />
-        <Button variant='outlined' onClick={submitHandler}>
+        <Button variant='contained' onClick={submitHandler}>
           Login
         </Button>
         <h4>Did not have account?</h4>
-        <Button variant='outlined' onClick={submitHandler2}>
+        <Button variant='contained' onClick={submitHandler2}>
           Signup
         </Button>
       </div>

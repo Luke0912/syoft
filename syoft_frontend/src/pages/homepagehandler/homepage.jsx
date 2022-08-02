@@ -51,6 +51,7 @@ export const Home = () => {
     <>
       <h3>Name:{name}</h3>
       <h3>Role:{role}</h3> <br />
+      {role === "staff"?(<p>Staff cannot add view or edit</p>):(<p>Admin/Manager can Add/View/Edit</p>) }
       <div className={styles.main}>
         <div className={styles.add}>
           <ThemeProvider theme={theme}>
@@ -59,22 +60,24 @@ export const Home = () => {
                 Add Product
               </Button>
             ) : (
-              <Button variant='contained' onClick={handleAdd} disabled>
+              <Button variant='contained' onClick={handleAdd}>
                 Add Product
               </Button>
             )}
           </ThemeProvider>
         </div>
         <div className={styles.viewall}>
-          {role === 'staff' ? (
-            <Button variant='contained' onClick={handleView} disabled>
-              View All Product
-            </Button>
-          ) : (
-            <Button variant='contained' onClick={handleView} disabled>
-              View All Product
-            </Button>
-          )}
+          <ThemeProvider theme={theme}>
+            {role === 'staff' ? (
+              <Button variant='contained' onClick={handleView} disabled>
+                View All Product
+              </Button>
+            ) : (
+              <Button variant='contained' onClick={handleView}>
+                View All Product
+              </Button>
+            )}
+          </ThemeProvider>
         </div>
         {/* <div className={styles.view}>
           <ThemeProvider theme={theme}>

@@ -41,7 +41,7 @@ export const Signup = () => {
       console.log(resp);
       navigate('/Login');
     } catch (error) {
-      alert(error.message);
+      alert('Not Able to signup');
     }
   };
 
@@ -83,11 +83,13 @@ export const Signup = () => {
           name='role'
           onChange={handleInput}
         />
-        <Button variant='outlined' onClick={handleRegister}>
+        <Button variant='contained' onClick={handleRegister}>
           Signup
         </Button>
         <h3>Already Have a Account?</h3>
-        <Button onClick={handleGo}>Go to Login Page</Button>
+        <Button variant='contained' onClick={handleGo}>
+          Go to Login Page
+        </Button>
       </div>
     </>
   );
