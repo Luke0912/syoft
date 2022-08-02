@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 
 import { AuthContext } from '../../contexts/Authcontext';
 import Button from '@mui/material/Button';
+import UserRecipes from '../../components/UserRecipes/UserRecipes';
 import axios from 'axios';
 import configuration from '../../config';
 import { orange } from '@mui/material/colors';
@@ -20,7 +21,7 @@ const theme = createTheme({
 });
 
 export const Home = () => {
-  const { button, name, role, token } = useContext(AuthContext);
+  const { name, role, token } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [item, setItem] = useState([]);
@@ -40,22 +41,17 @@ export const Home = () => {
       });
     // handleRender(false);
   };
-
-  // const handleViewUser = () => {
-  //   axios.get(configuration.BASE_URL.concat(`/product/${id}`)).then((data) => {
-  //     setItem(data.data);
-  //   });
-  //   handleRender(true);
-  // };
   return (
     <>
       <h3>Name:{name}</h3>
       <h3>Role:{role}</h3> <br />
-      {role === "staff"?(<p>Staff cannot add view or edit</p>):(<p>Admin/Manager can Add/View/Edit</p>) }
+      <p>Staff cannot add view or edit</p>
+      <p>Admin can add,view and edit inventory_count</p>
+      <p>Admin can view and edit inventory_count</p>
       <div className={styles.main}>
         <div className={styles.add}>
           <ThemeProvider theme={theme}>
-            {role === 'staff' ? (
+            {role === 'staff' || role === 'manager' ? (
               <Button variant='contained' onClick={handleAdd} disabled>
                 Add Product
               </Button>
@@ -79,26 +75,11 @@ export const Home = () => {
             )}
           </ThemeProvider>
         </div>
-        {/* <div className={styles.view}>
-          <ThemeProvider theme={theme}>
-            <Button variant='contained' onClick={handleViewUser}>
-              View Your Recipes
-            </Button>
-          </ThemeProvider>
-        </div> */}
       </div>
       <div className={styles.list}>
         {item.map((e) => (
           <div key={e._id} className={styles.listitems}>
-            {!button && (
-              <>
-                <h4>Dish Name:{e.name}</h4>
-                <p>Price:{e.price}</p>
-                <p>Description:{e.description}</p>
-                <p>Inventory_count:{e.inventory_count}</p>
-              </>
-            )}
-            {/* {button && <UserRecipes recipe={e} />} */}
+            <UserRecipes product={e} />
           </div>
         ))}
       </div>
