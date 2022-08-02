@@ -20,8 +20,7 @@ const theme = createTheme({
 });
 
 export const Home = () => {
-  const { id, button, handleRender, name, role, token } =
-    useContext(AuthContext);
+  const { button, name, role, token } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [item, setItem] = useState([]);
