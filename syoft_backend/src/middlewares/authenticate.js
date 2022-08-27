@@ -1,6 +1,5 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-// var Promice = require("Promice")
 const verifyToken = (token) => {
   return new Promise((resolve, reject) => {
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
@@ -34,7 +33,7 @@ const authenticate = async (req, res, next) => {
       .status(400)
       .send({ message: 'Authorization token not found or incorrect' });
   }
-
+  console.log(decoded)
   req.user = decoded.user;
 
   return next();

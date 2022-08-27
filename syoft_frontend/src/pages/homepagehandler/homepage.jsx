@@ -3,14 +3,12 @@ import { useContext, useState } from 'react';
 
 import { AuthContext } from '../../contexts/Authcontext';
 import Button from '@mui/material/Button';
-import UserRecipes from '../../components/UserRecipes/UserRecipes';
+import UserProduct from '../../components/UserProduct/UserProduct';
 import axios from 'axios';
 import configuration from '../../config';
 import { orange } from '@mui/material/colors';
 import styles from './homepage.module.css';
 import { useNavigate } from 'react-router-dom';
-
-// import UserRecipes from "../../components/UserRecipes/UserRecipes";
 
 const theme = createTheme({
   palette: {
@@ -79,7 +77,7 @@ export const Home = () => {
       <div className={styles.list}>
         {item.map((e) => (
           <div key={e._id} className={styles.listitems}>
-            <UserRecipes product={e} />
+            <UserProduct product={e} />
           </div>
         ))}
       </div>

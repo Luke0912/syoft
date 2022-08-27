@@ -15,7 +15,7 @@ const theme = createTheme({
   },
 });
 
-const UserRecipes = ({ product }) => {
+const UserProduct = ({ product }) => {
   const { token } = useContext(AuthContext);
   const [editable, setEditable] = useState(false);
 
@@ -100,4 +100,4 @@ const UserRecipes = ({ product }) => {
     </>
   );
 };
-export default UserRecipes;
+export default UserProduct;

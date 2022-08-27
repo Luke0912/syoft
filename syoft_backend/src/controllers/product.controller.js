@@ -23,6 +23,7 @@ const editProduct = async (req, res) => {
 };
 
 const getProduct = async (req, res) => {
+  console.log(req)
   try {
     const product = await Product.find();
     return res.status(200).send(product);
